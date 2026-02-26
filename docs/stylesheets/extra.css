@@ -1,0 +1,10 @@
+:root {
+  /* Dana-Farber blue */
+  --md-primary-fg-color: #00629B;
+  /* Dana-Farber orange */
+  --md-accent-fg-color: #FFA300;
+
+  --primary-color: #00629B;
+  --secondary-color: #FFA300;
+  --tertiary-color: #41B6E6;
+}
