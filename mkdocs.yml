@@ -1,6 +1,23 @@
 site_name: MOAlmanac Documentation
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
 
 nav:
   - Home: index.md
@@ -20,12 +37,13 @@ nav:
       - URL Strategy: concepts/url-strategy.md
   - Database:
       - Overview: database/index.md
-      - Workflow: database/overview/workflow.md
-      - Schema Diagram: database/overview/schema-diagram.md
-      - Dereferencing Pipeline: database/overview/dereferencing-pipeline.md
-      - Validation and QC: database/overview/validation-and-qc.md
-      - Reviewer Guide: database/overview/reviewer-guide.md
-      - Pitfalls and Edge Cases: database/overview/pitfalls-and-edge-cases.md
+      - Service Overview:
+          - Workflow: database/overview/workflow.md
+          - Schema Diagram: database/overview/schema-diagram.md
+          - Dereferencing Pipeline: database/overview/dereferencing-pipeline.md
+          - Validation and QC: database/overview/validation-and-qc.md
+          - Reviewer Guide: database/overview/reviewer-guide.md
+          - Pitfalls and Edge Cases: database/overview/pitfalls-and-edge-cases.md
       - Schemas:
           - Overview: database/schemas/index.md
           - Referenced:
@@ -67,7 +85,7 @@ nav:
       - Troubleshooting: browser/troubleshooting.md
   - Algorithm:
       - Overview: algorithm/index.md
-      - Overview Page: algorithm/overview.md
+      - Service Overview: algorithm/overview.md
       - Inputs and Outputs: algorithm/inputs-and-outputs.md
       - Validation: algorithm/validation.md
   - Governance:
