@@ -1,0 +1,78 @@
+site_name: MOAlmanac Documentation
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Start Here:
+      - Overview: start-here/index.md
+      - Quickstarts:
+          - Reader: start-here/quickstarts/reader.md
+          - Curator: start-here/quickstarts/curator.md
+          - Developer: start-here/quickstarts/developer.md
+  - Concepts:
+      - Overview: concepts/index.md
+      - Glossary: concepts/glossary.md
+      - IDs and Namespaces: concepts/ids-and-namespaces.md
+      - Referenced vs Dereferenced: concepts/referenced-vs-dereferenced.md
+      - Provenance: concepts/provenance.md
+      - Dates and Versioning: concepts/dates-and-versioning.md
+      - URL Strategy: concepts/url-strategy.md
+  - Database:
+      - Overview: database/index.md
+      - Workflow: database/overview/workflow.md
+      - Schema Diagram: database/overview/schema-diagram.md
+      - Dereferencing Pipeline: database/overview/dereferencing-pipeline.md
+      - Validation and QC: database/overview/validation-and-qc.md
+      - Reviewer Guide: database/overview/reviewer-guide.md
+      - Pitfalls and Edge Cases: database/overview/pitfalls-and-edge-cases.md
+      - Schemas:
+          - Overview: database/schemas/index.md
+          - Referenced:
+              - Overview: database/schemas/referenced/index.md
+              - Documents: database/schemas/referenced/documents.md
+              - Indications: database/schemas/referenced/indications.md
+              - Agents: database/schemas/referenced/agents.md
+              - URLs: database/schemas/referenced/urls.md
+          - Dereferenced:
+              - Overview: database/schemas/dereferenced/index.md
+              - Documents: database/schemas/dereferenced/documents.md
+              - Indications: database/schemas/dereferenced/indications.md
+              - Agents: database/schemas/dereferenced/agents.md
+              - URLs: database/schemas/dereferenced/urls.md
+      - SOP:
+          - Overview: database/sop/index.md
+          - General:
+              - Curation Workflow: database/sop/general/curation-workflow.md
+              - Source Hierarchy: database/sop/general/source-hierarchy.md
+              - Naming Normalization: database/sop/general/naming-normalization.md
+              - Monitoring and Staying Up to Date: database/sop/general/monitoring-and-staying-up-to-date.md
+              - PR Checklist: database/sop/general/pr-checklist.md
+          - Agencies:
+              - Overview: database/sop/agencies/index.md
+              - FDA: database/sop/agencies/fda.md
+              - EMA: database/sop/agencies/ema.md
+              - HPRA: database/sop/agencies/hpra.md
+              - HSE: database/sop/agencies/hse.md
+  - API:
+      - Overview: api/index.md
+      - Quickstart: api/quickstart.md
+      - Endpoints: api/endpoints.md
+      - Schemas: api/schemas.md
+      - Versioning: api/versioning.md
+  - Browser:
+      - Overview: browser/index.md
+      - Deployment: browser/deployment.md
+      - Configuration: browser/configuration.md
+      - Troubleshooting: browser/troubleshooting.md
+  - Algorithm:
+      - Overview: algorithm/index.md
+      - Overview Page: algorithm/overview.md
+      - Inputs and Outputs: algorithm/inputs-and-outputs.md
+      - Validation: algorithm/validation.md
+  - Governance:
+      - Overview: governance/index.md
+      - Releases and Versioning: governance/releases-and-versioning.md
+      - Schema Evolution: governance/schema-evolution.md
+      - Deprecation Policy: governance/deprecation-policy.md
+      - Citation and Attribution: governance/citation-and-attribution.md
