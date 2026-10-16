@@ -10,3 +10,7 @@
 	path = external/algorithm
 	url = https://github.com/vanallenlab/moalmanac
 	shallow = true
+[submodule "external/browser"]
+	path = external/browser
+	url = https://github.com/vanallenlab/moalmanac-browser
+	shallow = true

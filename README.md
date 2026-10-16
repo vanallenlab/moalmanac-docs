@@ -24,6 +24,7 @@ The documented repositories are included as [git submodules](https://github.blog
 - `external/db` - [moalmanac-db](https://github.com/vanallenlab/moalmanac-db)
 - `external/api` - [moalmanac-api](https://github.com/vanallenlab/moalmanac-api)
 - `external/algorithm` - [moalmanac](https://github.com/vanallenlab/moalmanac)
+- `external/browser` - [moalmanac-browser](https://github.com/vanallenlab/moalmanac-browser)
 
 Treat these folders as read-only: make changes in each repository itself, then update the pinned commit here. To move a submodule to the latest commit on its default branch:
 
