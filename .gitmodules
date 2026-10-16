@@ -1,0 +1,16 @@
+[submodule "external/db"]
+	path = external/db
+	url = https://github.com/vanallenlab/moalmanac-db
+	shallow = true
+[submodule "external/api"]
+	path = external/api
+	url = https://github.com/vanallenlab/moalmanac-api
+	shallow = true
+[submodule "external/algorithm"]
+	path = external/algorithm
+	url = https://github.com/vanallenlab/moalmanac
+	shallow = true
+[submodule "external/browser"]
+	path = external/browser
+	url = https://github.com/vanallenlab/moalmanac-browser
+	shallow = true
