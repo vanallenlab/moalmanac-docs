@@ -33,6 +33,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Generate schema reference pages
+        run: python utils/generate_schema_pages.py
+
       - name: Build site
         run: zensical build --clean --strict
 
