@@ -1,4 +1,4 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy Zensical site to GitHub Pages
 
 on:
   push:
@@ -20,12 +20,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          cache: "pip"
+          python-version: "3.14"
 
       - name: Install dependencies
         run: |
@@ -33,7 +34,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build site
-        run: mkdocs build --clean
+        run: zensical build --clean --strict
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

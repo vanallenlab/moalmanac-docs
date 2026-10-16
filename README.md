@@ -1,21 +1,42 @@
 # Molecular Oncology Almanac Documentation
-This repository hosts the [Documentation subdomain]() for [Molecular Oncology Almanac](https://dev.moalmanac.org), built with [MkDocs](https://www.mkdocs.org) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). It contains documentation for all of the Molecular Oncology Almanac services.
+This repository hosts the [Documentation subdomain]() for [Molecular Oncology Almanac](https://dev.moalmanac.org), built with [Zensical](https://zensical.org), the successor to [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). It contains documentation for all of the Molecular Oncology Almanac services.
 
 ## Installation
 ### Download
 This repository can be downloaded through GitHub by either using the website or terminal. To download on the website, navigate to the top of this page, click the green `Clone or download` button, and select `Download ZIP` to download this repository in a compressed format. To install using GitHub on terminal, type:
 
 ```bash
-git clone https://github.com/vanallenlab/moalmanac-docs.git
+git clone --recurse-submodules https://github.com/vanallenlab/moalmanac-docs.git
 cd moalmanac-docs
 ```
 
+If you already cloned without `--recurse-submodules`, fetch the submodules with:
+
+```bash
+git submodule update --init
+```
+
+### Submodules
+The documented repositories are included as [git submodules](https://github.blog/open-source/git/working-with-submodules/) under `external/`, each pinned to a specific commit so every build of this site is reproducible:
+
+- `external/db` - [moalmanac-db](https://github.com/vanallenlab/moalmanac-db)
+- `external/api` - [moalmanac-api](https://github.com/vanallenlab/moalmanac-api)
+- `external/algorithm` - [moalmanac](https://github.com/vanallenlab/moalmanac)
+
+Treat these folders as read-only: make changes in each repository itself, then update the pinned commit here. To move a submodule to the latest commit on its default branch:
+
+```bash
+git submodule update --remote external/db
+```
+
+Then commit the updated submodule (e.g. `git add external/db`) in this repository.
+
 ### Python dependencies
-This repository uses Python 3.12. We recommend using a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and running Python with either [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html). 
+This repository uses Python 3.14. We recommend using a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and running Python with either [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html). 
 
 Run the following from this repository's directory to create a virtual environment and install dependencies with Anaconda or Miniconda:
 ```bash
-conda create -y -n moalmanac-docs python=3.12
+conda create -y -n moalmanac-docs python=3.14
 conda activate moalmanac-docs
 pip install -r requirements.txt
 ```
@@ -30,7 +51,7 @@ pip install -r requirements.txt
 ## Development
 To preview the site locally, run:
 ```bash
-mkdocs serve
+zensical serve
 ```
 The website will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
@@ -46,7 +67,11 @@ ruby    19849 vanallenlab   12u  IPv4 0xea464cd74b3ffbe0      0t0  TCP 127.0.0.1
 This site is built and deployed using [GitHub Actions](https://github.com/features/actions). On every push to the `main` branch, the workflow builds the site and publishes it to [GitHub Pages](https://docs.github.com/en/pages).
 
 # Repository structure
-TO DO
+- [mkdocs.yml](mkdocs.yml) - site configuration and navigation, which Zensical reads directly
+- [docs/](docs/) - the site's pages, assets, and stylesheets
+- `external/` - the documented repositories, as submodules (see [Submodules](#submodules))
+- [utils/](utils/) - helper scripts for local development
+- [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml) - builds the site with `zensical build --strict` and deploys it to GitHub Pages
 
 # License
 This repository is distributed under the [GNU GENERAL PUBLIC LICENSE Version 2](./LICENSE).
