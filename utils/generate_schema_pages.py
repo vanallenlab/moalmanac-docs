@@ -8,6 +8,12 @@ in full and ignored by git, so run this before `zensical build` or
 `zensical serve`:
 
     python utils/generate_schema_pages.py
+
+It also rewrites the schema entries in mkdocs.yml's `nav`, between the
+"# BEGIN generated schema nav" and "# END generated schema nav" comments, so every
+schema page appears in the sidebar. Commit that change with the submodule update
+that caused it. With `--check`, mkdocs.yml is left unchanged and the script exits
+with status 1 if its schema entries are out of date; CI runs it this way.
 """
 
 import argparse
@@ -24,6 +30,9 @@ import unicodedata
 REPOSITORY_ROOT = pathlib.Path(__file__).resolve().parents[1]
 DB_DIRECTORY = REPOSITORY_ROOT / "external" / "db"
 OUTPUT_DIRECTORY = REPOSITORY_ROOT / "docs" / "database" / "schemas"
+CONFIG_PATH = REPOSITORY_ROOT / "mkdocs.yml"
+NAV_BEGIN = "# BEGIN generated schema nav"
+NAV_END = "# END generated schema nav"
 DB_REPOSITORY_URL = "https://github.com/vanallenlab/moalmanac-db"
 
 # Title and introduction for each category's index page, keyed by folder name.
@@ -471,10 +480,12 @@ def literal(value: typing.Any) -> str:
 
 def main() -> int:
     """
-    Generates every schema page and index page.
+    Generates every schema page and index page, and updates or checks the
+    schema entries in mkdocs.yml's `nav`.
 
     Returns:
-        int: The exit status: 0 on success, 1 if the schemas are missing.
+        int: The exit status: 0 on success; 1 if the schemas or nav markers are
+            missing, or if `--check` found the nav out of date.
     """
     parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
     parser.add_argument(
@@ -488,6 +499,17 @@ def main() -> int:
         type=pathlib.Path,
         default=OUTPUT_DIRECTORY,
         help="Where to write pages (default: docs/database/schemas).",
+    )
+    parser.add_argument(
+        "--config",
+        type=pathlib.Path,
+        default=CONFIG_PATH,
+        help="The site configuration whose nav to update (default: mkdocs.yml).",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Do not change the config; exit with status 1 if its schema nav is out of date.",
     )
     arguments = parser.parse_args()
 
@@ -525,8 +547,26 @@ def main() -> int:
         for name, lines in pages.items():
             (output / name).write_text("\n".join(lines).rstrip() + "\n")
         total += len(pages)
-
     print(f"Wrote {total} pages for moalmanac-db {commit[:7] if commit else '(unknown commit)'}.")
+
+    config = arguments.config.read_text()
+    try:
+        updated = update_nav(config=config, loaded=loaded)
+    except ValueError as error:
+        print(error, file=sys.stderr)
+        return 1
+    if updated == config:
+        print(f"{arguments.config.name} schema nav is up to date.")
+    elif arguments.check:
+        print(
+            f"{arguments.config.name} schema nav is out of date. Run "
+            "`python utils/generate_schema_pages.py` and commit the result.",
+            file=sys.stderr,
+        )
+        return 1
+    else:
+        arguments.config.write_text(updated)
+        print(f"Updated the schema nav in {arguments.config.name}.")
     return 0
 
 
@@ -547,6 +587,32 @@ def db_commit(db_directory: pathlib.Path) -> str | None:
         check=False,
     )
     return result.stdout.strip() if result.returncode == 0 else None
+
+
+def nav_entries(loaded: dict[str, dict[str, dict]], indent: str) -> list[str]:
+    """
+    Renders the schema entries for mkdocs.yml's `nav`.
+
+    Args:
+        loaded (dict[str, dict[str, dict]]): Every schema, keyed by category and
+            then filename.
+        indent (str): The indentation of the entries, matching the markers.
+
+    Returns:
+        list[str]: YAML lines: per category, an Overview entry for its index
+            page, then one entry per schema in the same order as the index.
+    """
+    lines = []
+    for category, schemas in loaded.items():
+        directory = f"database/schemas/{category}"
+        lines += [
+            f"{indent}- {category.capitalize()}:",
+            f"{indent}    - Overview: {directory}/index.md",
+        ]
+        for filename in sorted(schemas, key=lambda name: schemas[name]["title"]):
+            page = filename.removesuffix(".schema.json") + ".md"
+            lines.append(f"{indent}    - {yaml_key(schemas[filename]['title'])}: {directory}/{page}")
+    return lines
 
 
 def reference_link(reference: str, context: Context | None) -> str:
@@ -774,6 +840,36 @@ def render_schema(
     return lines
 
 
+def update_nav(config: str, loaded: dict[str, dict[str, dict]]) -> str:
+    """
+    Replaces the schema entries between the nav markers in the site config.
+
+    Args:
+        config (str): The contents of mkdocs.yml.
+        loaded (dict[str, dict[str, dict]]): Every schema, keyed by category and
+            then filename.
+
+    Raises:
+        ValueError: If the begin and end markers are not each found exactly once,
+            in order.
+
+    Returns:
+        str: The config with the entries between the markers regenerated.
+    """
+    lines = config.splitlines()
+    begins = [i for i, line in enumerate(lines) if line.strip().startswith(NAV_BEGIN)]
+    ends = [i for i, line in enumerate(lines) if line.strip().startswith(NAV_END)]
+    if len(begins) != 1 or len(ends) != 1 or begins[0] > ends[0]:
+        raise ValueError(
+            f"Expected one '{NAV_BEGIN}' line followed by one '{NAV_END}' line in "
+            "the nav of mkdocs.yml.",
+        )
+    begin, end = begins[0], ends[0]
+    indent = lines[begin][: len(lines[begin]) - len(lines[begin].lstrip())]
+    entries = nav_entries(loaded=loaded, indent=indent)
+    return "\n".join([*lines[: begin + 1], *entries, *lines[end:]]) + "\n"
+
+
 def root_definition(schema: dict) -> str | None:
     """
     Finds the `$defs` entry a schema's top-level `$ref` points to.
@@ -801,6 +897,19 @@ def source_url(category: str, filename: str, commit: str | None) -> str:
         str: The URL.
     """
     return f"{DB_REPOSITORY_URL}/blob/{commit or 'main'}/schemas/{category}/{filename}"
+
+
+def yaml_key(text: str) -> str:
+    """
+    Formats a nav title as a YAML key, quoting it only when YAML requires it.
+
+    Args:
+        text (str): The title, e.g. "Agent".
+
+    Returns:
+        str: The title as is if it is plain words, otherwise double-quoted.
+    """
+    return text if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9 ()-]*", text) else json.dumps(text)
 
 
 if __name__ == "__main__":

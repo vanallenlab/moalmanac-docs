@@ -1,6 +1,7 @@
 This repository hosts the [Documentation subdomain](https://vanallenlab.github.io/moalmanac-docs/) for [Molecular Oncology Almanac](https://moalmanac.org), built with [Zensical](https://zensical.org). It contains documentation for all of the Molecular Oncology Almanac services.
 
 ## Installation
+
 ### Download
 
 This repository can be downloaded through GitHub by either using the website or terminal. To download on the website, navigate to the top of this page, click the green `Clone or download` button, and select `Download ZIP` to download this repository in a compressed format. To install using GitHub on terminal, type:
@@ -62,6 +63,12 @@ python utils/generate_schema_pages.py
 
 This writes a page per schema, plus an index page listing them, to `docs/database/schemas/referenced/` and `docs/database/schemas/dereferenced/`. Those folders are regenerated in full on every run and ignored by git, so edit [utils/generate_schema_pages.py](utils/generate_schema_pages.py) rather than the pages. Run it again after updating `external/db`.
 
+The script also keeps the schema entries in [mkdocs.yml](mkdocs.yml)'s `nav` up to date, rewriting the lines between `# BEGIN generated schema nav` and `# END generated schema nav` so every schema page appears in the sidebar. Don't edit those lines by hand. If a moalmanac-db update adds, removes, or renames a schema, the script changes them; commit that change together with the submodule update. The deploy workflow runs the script with `--check`, which fails the build if the committed `nav` is out of date:
+
+```bash
+python utils/generate_schema_pages.py --check
+```
+
 To preview the site locally, run:
 
 ```bash
@@ -89,7 +96,7 @@ This site is built and deployed using [GitHub Actions](https://github.com/featur
 - [docs/](docs/) - the site's pages, assets, and stylesheets
 - `external/` - the documented repositories, as submodules (see [Submodules](#submodules))
 - [utils/](utils/) - helper scripts, including [generate_schema_pages.py](utils/generate_schema_pages.py), which generates the database schema reference pages
-- [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml) - generates the schema reference pages, builds the site with `zensical build --strict`, and deploys it to GitHub Pages
+- [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml) - generates the schema reference pages (checking the schema `nav` is current), builds the site with `zensical build --strict`, and deploys it to GitHub Pages
 
 ## License
 
