@@ -27,29 +27,8 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Start Here:
-      - Overview: start-here/index.md
-      - Quickstarts:
-          - Reader: start-here/quickstarts/reader.md
-          - Curator: start-here/quickstarts/curator.md
-          - Developer: start-here/quickstarts/developer.md
-  - Concepts:
-      - Overview: concepts/index.md
-      - Glossary: concepts/glossary.md
-      - IDs and Namespaces: concepts/ids-and-namespaces.md
-      - Referenced vs Dereferenced: concepts/referenced-vs-dereferenced.md
-      - Provenance: concepts/provenance.md
-      - Dates and Versioning: concepts/dates-and-versioning.md
-      - URL Strategy: concepts/url-strategy.md
   - Database:
       - Overview: database/index.md
-      - Service Overview:
-          - Workflow: database/overview/workflow.md
-          - Schema Diagram: database/overview/schema-diagram.md
-          - Dereferencing Pipeline: database/overview/dereferencing-pipeline.md
-          - Validation and QC: database/overview/validation-and-qc.md
-          - Reviewer Guide: database/overview/reviewer-guide.md
-          - Pitfalls and Edge Cases: database/overview/pitfalls-and-edge-cases.md
       - Schemas:
           - Overview: database/schemas/index.md
           # BEGIN generated schema nav: maintained by utils/generate_schema_pages.py
@@ -102,23 +81,8 @@ nav:
               - Therapy: database/schemas/dereferenced/therapies.md
               - TherapyGroup: database/schemas/dereferenced/therapy_groups.md
           # END generated schema nav
-      - SOP:
-          - Overview: database/sop/index.md
-          - General:
-              - Curation Workflow: database/sop/general/curation-workflow.md
-              - Source Hierarchy: database/sop/general/source-hierarchy.md
-              - Naming Normalization: database/sop/general/naming-normalization.md
-              - Monitoring and Staying Up to Date: database/sop/general/monitoring-and-staying-up-to-date.md
-              - PR Checklist: database/sop/general/pr-checklist.md
-          - Agencies:
-              - Overview: database/sop/agencies/index.md
-              - FDA: database/sop/agencies/fda.md
-              - EMA: database/sop/agencies/ema.md
-              - HPRA: database/sop/agencies/hpra.md
-              - HSE: database/sop/agencies/hse.md
   - API:
       - Overview: api/index.md
-      - Quickstart: api/quickstart.md
       # BEGIN generated API nav: maintained by utils/generate_api_pages.py
       - Endpoints:
           - Overview: api/reference/index.md
@@ -146,20 +110,13 @@ nav:
           - Therapy groups: api/reference/therapy_groups.md
       - Responses: api/reference/responses.md
       # END generated API nav
-      - Versioning: api/versioning.md
-  - Browser:
-      - Overview: browser/index.md
-      - Deployment: browser/deployment.md
-      - Configuration: browser/configuration.md
-      - Troubleshooting: browser/troubleshooting.md
   - Algorithm:
       - Overview: algorithm/index.md
-      - Service Overview: algorithm/overview.md
-      - Inputs and Outputs: algorithm/inputs-and-outputs.md
-      - Validation: algorithm/validation.md
-  - Governance:
-      - Overview: governance/index.md
-      - Releases and Versioning: governance/releases-and-versioning.md
-      - Schema Evolution: governance/schema-evolution.md
-      - Deprecation Policy: governance/deprecation-policy.md
-      - Citation and Attribution: governance/citation-and-attribution.md
+      # BEGIN generated algorithm nav: maintained by utils/copy_algorithm_pages.py
+      - Description of inputs: algorithm/description-of-inputs.md
+      - Description of outputs: algorithm/description-of-outputs.md
+      # END generated algorithm nav
+  - Browser: browser/index.md
+  - About:
+      - Releases and versioning: about/releases-and-versioning.md
+      - Citation: about/citation.md
