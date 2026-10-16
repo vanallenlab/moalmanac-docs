@@ -1,6 +1,7 @@
 site_name: Molecular Oncology Almanac Documentation
 theme:
   name: material
+  logo: assets/images/dana-farber-color.png
   features:
     - navigation.tabs
     - navigation.sections
