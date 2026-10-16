@@ -189,7 +189,10 @@ def describe(node: typing.Any, context: Context | None) -> str:
         parts.append(f"always {code(literal(node['const']))}")
     if "enum" in node:
         parts.append("one of " + ", ".join(code(literal(v)) for v in node["enum"]))
-    if "$ref" not in node and ("type" in node or "items" in node or "properties" in node):
+    # `const` and `enum` already say what the value is, so a scalar `type` beside
+    # them would only repeat it.
+    fixed = ("const" in node or "enum" in node) and node.get("type") != "array"
+    if "$ref" not in node and not fixed and ("type" in node or "items" in node or "properties" in node):
         parts.append(describe_type(node, context))
     for key in ("anyOf", "oneOf"):
         if key in node:
@@ -260,14 +263,15 @@ def describe_type(node: dict, context: Context | None) -> str:
     return " or ".join(descriptions)
 
 
-def extension_note(value: dict, required: bool, context: Context) -> str:
+def extension_note(value: dict, required: bool, context: Context | None) -> str:
     """
     Describes an extension's value and whether it is required, in parentheses.
 
     Args:
         value (dict): The extension's value schema; empty if unconstrained.
         required (bool): Whether the extension is required.
-        context (Context): Used to link `$ref`s.
+        context (Context | None): Used to link `$ref`s; None shows
+            them as code.
 
     Returns:
         str: A note such as " (string, required)", or "" if there is nothing to add.
@@ -357,7 +361,7 @@ def extension_rows(extensions: dict, context: Context) -> list[str]:
 
 def field_rows(
     node: dict,
-    context: Context,
+    context: Context | None,
     prefix: str = "",
     link_extensions: bool = False,
 ) -> list[str]:
@@ -369,7 +373,8 @@ def field_rows(
 
     Args:
         node (dict): An object schema with `properties` and `required`.
-        context (Context): Used to link `$ref`s.
+        context (Context | None): Used to link `$ref`s; None shows
+            them as code.
         prefix (str): The parent field's path, for nested fields (default: "").
         link_extensions (bool): If True, a top-level `extensions` field links to
             the page's Extensions section; otherwise its allowed extensions are
@@ -406,13 +411,18 @@ def field_rows(
     return rows
 
 
-def fields_table(node: dict, context: Context, link_extensions: bool = False) -> list[str]:
+def fields_table(
+    node: dict,
+    context: Context | None,
+    link_extensions: bool = False,
+) -> list[str]:
     """
     Builds a fields table for an object schema.
 
     Args:
         node (dict): An object schema with `properties`.
-        context (Context): Used to link `$ref`s.
+        context (Context | None): Used to link `$ref`s; None shows
+            them as code.
         link_extensions (bool): If True, the `extensions` field links to the
             page's Extensions section (default: False).
 
@@ -551,7 +561,12 @@ def main() -> int:
 
     config = arguments.config.read_text()
     try:
-        updated = update_nav(config=config, loaded=loaded)
+        updated = replace_between_markers(
+            config=config,
+            begin_marker=NAV_BEGIN,
+            end_marker=NAV_END,
+            render=lambda indent: nav_entries(loaded=loaded, indent=indent),
+        )
     except ValueError as error:
         print(error, file=sys.stderr)
         return 1
@@ -840,34 +855,41 @@ def render_schema(
     return lines
 
 
-def update_nav(config: str, loaded: dict[str, dict[str, dict]]) -> str:
+def replace_between_markers(
+    config: str,
+    begin_marker: str,
+    end_marker: str,
+    render: typing.Callable[[str], list[str]],
+) -> str:
     """
-    Replaces the schema entries between the nav markers in the site config.
+    Replaces the lines between two marker comments in the site config.
 
     Args:
         config (str): The contents of mkdocs.yml.
-        loaded (dict[str, dict[str, dict]]): Every schema, keyed by category and
-            then filename.
+        begin_marker (str): The comment that opens the block, e.g.
+            "# BEGIN generated schema nav".
+        end_marker (str): The comment that closes the block.
+        render (typing.Callable[[str], list[str]]): Builds the new lines, given
+            the markers' indentation.
 
     Raises:
         ValueError: If the begin and end markers are not each found exactly once,
             in order.
 
     Returns:
-        str: The config with the entries between the markers regenerated.
+        str: The config with the lines between the markers replaced.
     """
     lines = config.splitlines()
-    begins = [i for i, line in enumerate(lines) if line.strip().startswith(NAV_BEGIN)]
-    ends = [i for i, line in enumerate(lines) if line.strip().startswith(NAV_END)]
+    begins = [i for i, line in enumerate(lines) if line.strip().startswith(begin_marker)]
+    ends = [i for i, line in enumerate(lines) if line.strip().startswith(end_marker)]
     if len(begins) != 1 or len(ends) != 1 or begins[0] > ends[0]:
         raise ValueError(
-            f"Expected one '{NAV_BEGIN}' line followed by one '{NAV_END}' line in "
-            "the nav of mkdocs.yml.",
+            f"Expected one '{begin_marker}' line followed by one '{end_marker}' line "
+            "in the nav of mkdocs.yml.",
         )
     begin, end = begins[0], ends[0]
     indent = lines[begin][: len(lines[begin]) - len(lines[begin].lstrip())]
-    entries = nav_entries(loaded=loaded, indent=indent)
-    return "\n".join([*lines[: begin + 1], *entries, *lines[end:]]) + "\n"
+    return "\n".join([*lines[: begin + 1], *render(indent), *lines[end:]]) + "\n"
 
 
 def root_definition(schema: dict) -> str | None:

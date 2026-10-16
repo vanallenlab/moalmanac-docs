@@ -58,18 +58,23 @@ pip install -r requirements.txt
 
 ## Development
 
-The database schema reference pages are generated from moalmanac-db's JSON Schemas (`external/db/schemas/`), so generate them before building or previewing the site:
+The reference pages are generated from the submodules, so generate them before building or previewing the site:
 
 ```bash
 python utils/generate_schema_pages.py
+python utils/generate_api_pages.py
 ```
 
-This writes a page per schema, plus an index page listing them, to `docs/database/schemas/referenced/` and `docs/database/schemas/dereferenced/`. Those folders are regenerated in full on every run and ignored by git, so edit [utils/generate_schema_pages.py](utils/generate_schema_pages.py) rather than the pages. Run it again after updating `external/db`.
+- [utils/generate_schema_pages.py](utils/generate_schema_pages.py) reads moalmanac-db's JSON Schemas (`external/db/schemas/`) and writes a page per schema, plus an index page for each group, to `docs/database/schemas/referenced/` and `docs/database/schemas/dereferenced/`.
+- [utils/generate_api_pages.py](utils/generate_api_pages.py) reads the API's OpenAPI description (`external/api/docs/openapi.json`) and writes a page per endpoint, an endpoints overview, and a Responses page to `docs/api/reference/`. Records link to the schema pages rather than being described again.
 
-The script also keeps the schema entries in [mkdocs.yml](mkdocs.yml)'s `nav` up to date, rewriting the lines between `# BEGIN generated schema nav` and `# END generated schema nav` so every schema page appears in the sidebar. Don't edit those lines by hand. If a moalmanac-db update adds, removes, or renames a schema, the script changes them; commit that change together with the submodule update. The deploy workflow runs the script with `--check`, which fails the build if the committed `nav` is out of date:
+Those folders are regenerated in full on every run and ignored by git, so edit the scripts rather than the pages. Run them again after updating `external/db` or `external/api`.
+
+Each script also keeps its part of [mkdocs.yml](mkdocs.yml)'s `nav` up to date, rewriting the lines between its `# BEGIN generated ... nav` and `# END generated ... nav` comments so every generated page appears in the sidebar. Don't edit those lines by hand. If a submodule update adds, removes, or renames a schema or endpoint, the scripts change them; commit that change together with the submodule update. The deploy workflow runs both scripts with `--check`, which fails the build if the committed `nav` is out of date:
 
 ```bash
 python utils/generate_schema_pages.py --check
+python utils/generate_api_pages.py --check
 ```
 
 To preview the site locally, run:
@@ -98,8 +103,8 @@ This site is built and deployed using [GitHub Actions](https://github.com/featur
 - [mkdocs.yml](mkdocs.yml) - site configuration and navigation, which Zensical reads directly
 - [docs/](docs/) - the site's pages, assets, and stylesheets
 - `external/` - the documented repositories, as submodules (see [Submodules](#submodules))
-- [utils/](utils/) - helper scripts, including [generate_schema_pages.py](utils/generate_schema_pages.py), which generates the database schema reference pages
-- [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml) - generates the schema reference pages (checking the schema `nav` is current), builds the site with `zensical build --strict`, and deploys it to GitHub Pages
+- [utils/](utils/) - helper scripts, including [generate_schema_pages.py](utils/generate_schema_pages.py) and [generate_api_pages.py](utils/generate_api_pages.py), which generate the database schema and API reference pages
+- [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml) - generates the schema and API reference pages (checking their `nav` entries are current), builds the site with `zensical build --strict`, and deploys it to GitHub Pages
 
 ## License
 

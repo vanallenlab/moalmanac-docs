@@ -119,8 +119,33 @@ nav:
   - API:
       - Overview: api/index.md
       - Quickstart: api/quickstart.md
-      - Endpoints: api/endpoints.md
-      - Schemas: api/schemas.md
+      # BEGIN generated API nav: maintained by utils/generate_api_pages.py
+      - Endpoints:
+          - Overview: api/reference/index.md
+          - About: api/reference/about.md
+          - Search: api/reference/search.md
+          - Agents: api/reference/agents.md
+          - Alleles: api/reference/alleles.md
+          - Biomarker criteria: api/reference/biomarker_criteria.md
+          - Biomarkers: api/reference/biomarkers.md
+          - Codings: api/reference/codings.md
+          - Contributions: api/reference/contributions.md
+          - Copy changes: api/reference/copy_changes.md
+          - Diseases: api/reference/diseases.md
+          - Documents: api/reference/documents.md
+          - Function consequences: api/reference/function_consequences.md
+          - Genes: api/reference/genes.md
+          - Indications: api/reference/indications.md
+          - Mappings: api/reference/mappings.md
+          - Propositions: api/reference/propositions.md
+          - Sequence locations: api/reference/sequence_locations.md
+          - Sequence references: api/reference/sequence_references.md
+          - Statements: api/reference/statements.md
+          - Strengths: api/reference/strengths.md
+          - Therapies: api/reference/therapies.md
+          - Therapy groups: api/reference/therapy_groups.md
+      - Responses: api/reference/responses.md
+      # END generated API nav
       - Versioning: api/versioning.md
   - Browser:
       - Overview: browser/index.md
