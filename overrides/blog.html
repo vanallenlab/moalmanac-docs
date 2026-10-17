@@ -1,0 +1,24 @@
+{#-
+  Zensical's blog.html, with the News category overview added under each
+  listing page's heading. Used for the blog index, archive, and category pages;
+  post pages use blog-post.html.
+-#}
+{% extends "main.html" %}
+{% block container %}
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        {{ page.content }}
+        {% include "partials/news-categories.html" %}
+      </header>
+      {% for post in posts %}
+        {% include "partials/post.html" %}
+      {% endfor %}
+      {% if pagination %}
+        {% block pagination %}
+          {% include "partials/pagination.html" %}
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

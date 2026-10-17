@@ -1,6 +1,8 @@
 site_name: Molecular Oncology Almanac Documentation
+site_url: https://vanallenlab.github.io/moalmanac-docs/
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs
     - navigation.sections
@@ -15,6 +17,17 @@ extra_css:
 
 plugins:
   - search
+  - blog:
+      blog_dir: news
+      archive_name: Archives
+      post_url_format: "{slug}"
+  - rss:
+      feed_title: Molecular Oncology Almanac News
+      match_path: "news/posts/.*"
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
 
 markdown_extensions:
   - admonition
@@ -117,6 +130,8 @@ nav:
       - Description of outputs: algorithm/description-of-outputs.md
       # END generated algorithm nav
   - Browser: browser/index.md
+  - News:
+      - news/index.md
   - About:
       - Releases and versioning: about/releases-and-versioning.md
       - Citation: about/citation.md

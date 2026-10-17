@@ -8,3 +8,36 @@
   --secondary-color: #FFA300;
   --tertiary-color: #41B6E6;
 }
+
+/* Footer, matching news.moalmanac.org */
+.site-footer {
+  background-color: #EEEEEE;
+  color: #111111;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 50px;
+  padding: 2em 0;
+  text-align: center;
+  width: 100%;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  text-decoration: underline;
+}
+
+.site-footer__logo {
+  display: block;
+  margin: 1rem auto 0 auto;
+  max-height: 50px;
+  width: auto;
+}
