@@ -36,6 +36,12 @@ jobs:
       - name: Generate schema reference pages and check the schema nav
         run: python utils/generate_schema_pages.py --check
 
+      - name: Generate API reference pages and check the API nav
+        run: python utils/generate_api_pages.py --check
+
+      - name: Copy algorithm pages and check the algorithm nav
+        run: python utils/copy_algorithm_pages.py --check
+
       - name: Build site
         run: zensical build --clean --strict
 
