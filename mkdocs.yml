@@ -1,5 +1,5 @@
 site_name: Molecular Oncology Almanac Documentation
-site_url: https://vanallenlab.github.io/moalmanac-docs/
+site_url: https://docs.moalmanac.org/
 theme:
   name: material
   custom_dir: overrides

@@ -86,7 +86,7 @@ To preview the site locally, run:
 zensical serve
 ```
 
-The website will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+The website will be available at [http://localhost:8000](http://localhost:8000).
 
 If the ports fail to close when shutting down the application, use [utils/listen.sh](utils/listen.sh) to obtain the PID value of the service and then use [utils/kill.sh](utils/kill.sh) to shut down the ports. For example:
 
