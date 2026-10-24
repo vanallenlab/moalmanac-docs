@@ -1,7 +1,5 @@
 This repository hosts the [Documentation subdomain](https://vanallenlab.github.io/moalmanac-docs/) for [Molecular Oncology Almanac](https://moalmanac.org), built with [Zensical](https://zensical.org). It contains documentation for all of the Molecular Oncology Almanac services.
 
-**This is in development**.
-
 ## Installation
 
 ### Download
@@ -38,9 +36,7 @@ Then commit the updated submodule (e.g. `git add external/db`) in this repositor
 
 ### Python dependencies
 
-This repository uses Python 3.14. We recommend using a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and running Python with either [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html).
-
-Run the following from this repository's directory to create a virtual environment and install dependencies with Anaconda or Miniconda:
+This repository uses Python 3.14. We recommend managing your environment wih [Conda-forge](https://conda-forge.org)'s installer [Miniforge](https://conda-forge.org/download/). Run the following from this repository's directory to create a virtual environment and install dependencies with Miniforge:
 
 ```bash
 conda create -y -n moalmanac-docs python=3.14
