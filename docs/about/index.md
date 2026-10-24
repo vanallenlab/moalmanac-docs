@@ -4,7 +4,7 @@ The Molecular Oncology Almanac (MOAlmanac) is a clinical and biological interpre
 
 The underlying database of this method is dependent on expert curation of the current body of knowledge on how molecular alterations affect clinical actionability. As the field of precision oncology grows, the quantity of research on how specific alterations affect therapeutic response and patient prognosis expands at an increasing rate. Curating the latest literature and presenting it in an accessible manner increases the abilities of clinicians and researchers alike to rapidly assess the importance of a molecular feature.
 
-The database has been refactored to align with representation standards developed by the [Global Alliance for Genomics & Health](https://www.ga4gh.org) [Genomic Knowledge Standards Work Stream](https://www.ga4gh.org/work_stream/genomic-knowledge-standards/). You can view our stable version of the database at [https://old.moalmanac.org](https://old.moalmanac.org), **which will be deprecated on March 31st, 2027**.
+The database has been refactored to align with representation standards developed by the [Global Alliance for Genomics & Health](https://www.ga4gh.org) [Genomic Knowledge Standards Work Stream](https://www.ga4gh.org/work_stream/genomic-knowledge-standards/). You can access our our version of the database and browser at [https://old.moalmanac.org](https://old.moalmanac.org), **which will be deprecated on March 31st, 2027**.
 
 ## Molecular Oncology Almanac resources
 
@@ -41,10 +41,3 @@ If you use the Molecular Oncology Almanac, please cite our publication. See [Cit
 ## Data access
 
 The contents of this knowledge base can be downloaded through [the database's GitHub releases](https://github.com/vanallenlab/moalmanac-db/releases) or the [API](https://api.moalmanac.org), particularly the [statements endpoint](https://api.moalmanac.org/#/Entities/get_statements_statements_get).
-
-## Legal and contact
-
-- [Terms of use](terms-of-use.md)
-- [Privacy policy](privacy-policy.md)
-- [Disclaimer](disclaimer.md)
-- [Contact](contact.md)

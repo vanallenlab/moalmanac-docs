@@ -8,8 +8,8 @@ This site documents each part of the project:
 | --- | --- |
 | [Database](database/index.md) | The expert-curated knowledge base, how its records are structured, and a reference page for every schema. |
 | [API](api/index.md) | The public API at [api.moalmanac.org](https://api.moalmanac.org), with a reference page for every endpoint. |
-| [Algorithm](algorithm/index.md) | The clinical interpretation algorithm for individual patient samples, and a description of its inputs and outputs. |
 | [Browser](browser/index.md) | The web browser at [moalmanac.org](https://moalmanac.org) for searching the database. |
+| [Algorithm](algorithm/index.md) | The clinical interpretation algorithm for individual patient samples, and a description of its inputs and outputs. |
 
 To cite MOAlmanac or a specific database release, see [Citation](about/citation.md). Each project's source code is on GitHub under [vanallenlab](https://github.com/vanallenlab). See [About](about/index.md) for resources and region-specific instances, or [Contact](about/contact.md) with questions.
 

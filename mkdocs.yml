@@ -126,20 +126,20 @@ nav:
           - Therapy groups: api/reference/therapy_groups.md
       - Responses: api/reference/responses.md
       # END generated API nav
+  - Browser: browser/index.md
   - Algorithm:
       - Overview: algorithm/index.md
       # BEGIN generated algorithm nav: maintained by utils/copy_algorithm_pages.py
       - Description of inputs: algorithm/description-of-inputs.md
       - Description of outputs: algorithm/description-of-outputs.md
       # END generated algorithm nav
-  - Browser: browser/index.md
   - News:
       - news/index.md
   - About:
       - Overview: about/index.md
-      - Releases and versioning: about/releases-and-versioning.md
       - Citation: about/citation.md
       - Contact: about/contact.md
-      - Terms of use: about/terms-of-use.md
-      - Privacy policy: about/privacy-policy.md
       - Disclaimer: about/disclaimer.md
+      - Privacy policy: about/privacy-policy.md
+      - Terms of use: about/terms-of-use.md
+      - Releases and versioning: about/releases-and-versioning.md

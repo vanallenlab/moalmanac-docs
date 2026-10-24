@@ -3,6 +3,9 @@
   --md-primary-fg-color: #00629B;
   /* Dana-Farber orange */
   --md-accent-fg-color: #FFA300;
+  /* White text on the primary-colored header and tabs */
+  --md-primary-bg-color: #FFFFFF;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
 
   --primary-color: #00629B;
   --secondary-color: #FFA300;
@@ -40,4 +43,67 @@
   margin: 1rem auto 0 auto;
   max-height: 50px;
   width: auto;
+}
+
+/* Header, matching news.moalmanac.org: white text on Dana-Farber blue */
+.md-header,
+.md-tabs {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.md-header a,
+.md-header__button,
+.md-tabs__link,
+.md-tabs__link--active,
+.md-header .md-search__icon,
+.md-header .md-search__input::placeholder {
+  color: #FFFFFF;
+}
+
+.md-tabs__link {
+  opacity: 1;
+}
+
+.md-header__title,
+.md-header__topic {
+  font-weight: 400;
+}
+
+/* Navbar hover: orange text, background unchanged */
+.md-header a:hover,
+.md-header__button:hover,
+.md-header__title:hover,
+.md-tabs__link:hover {
+  background-color: transparent;
+  color: var(--secondary-color);
+}
+
+/* Search button in the navbar */
+.md-header .md-search__button,
+.md-header .md-search__button:hover,
+.md-header .md-search__button:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.md-header .md-search__button:before {
+  background-color: #FFFFFF;
+}
+
+.md-header .md-search__button:after {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+/* Selected page in the left sidebar */
+.md-nav--primary .md-nav__item .md-nav__link--active {
+  background: rgba(0, 98, 155, 0.1);
+  color: var(--primary-color);
+}
+
+/* Search results (rendered in a shadow root that reads the accent color) */
+body > div[style*="position: fixed"] {
+  --md-accent-fg-color: #00629B;
+  --md-accent-fg-color--transparent: rgba(0, 98, 155, 0.1);
 }
