@@ -1,7 +1,7 @@
-{#-
-  Replaces the theme's footer with the one used on news.moalmanac.org.
--#}
 {% extends "base.html" %}
+{% block extrahead %}
+  <script defer data-domain="docs.moalmanac.org" src="https://plausible.io/js/script.js"></script>
+{% endblock %}
 {% block footer %}
   {% include "partials/site-footer.html" %}
 {% endblock %}

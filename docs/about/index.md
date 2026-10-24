@@ -8,6 +8,7 @@ The database has been refactored to align with representation standards develope
 
 ## Molecular Oncology Almanac resources
 
+- [Molecular Oncology Almanac Algorithm](../algorithm/index.md) - clinical interpretation of individual patient samples ([GitHub](https://github.com/vanallenlab/moalmanac)).
 - [Molecular Oncology Almanac API](https://api.moalmanac.org) - programmatic access to the knowledge base ([GitHub](https://github.com/vanallenlab/moalmanac-api)).
 - [Molecular Oncology Almanac Browser](https://moalmanac.org) - browse the underlying knowledge base ([GitHub](https://github.com/vanallenlab/moalmanac-browser)).
 - Molecular Oncology Almanac Database - the knowledge base content and release notes ([GitHub](https://github.com/vanallenlab/moalmanac-db)).
