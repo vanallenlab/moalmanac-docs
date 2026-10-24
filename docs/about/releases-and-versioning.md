@@ -6,9 +6,7 @@ Database content changes are made on a branch of [moalmanac-db](https://github.c
 
 Releases are labeled by date, in the format `v.YYYY-MM-DD`. Each release is published on the repository's [releases page](https://github.com/vanallenlab/moalmanac-db/releases) with release notes, and every content change is summarized in the [content changelog](https://news.moalmanac.org/category/database).
 
-Since the 2025-09-04 release, each release also has its own Zenodo DOI, so a specific version can be cited. See [Citation](citation.md).
-
-The current schema is still a draft, and its `about` record reports `"release": "draft"`. It may change as it is aligned with VA-Spec and Cat-VRS; see [Database](../database/index.md).
+Since the [2025-09-04 release](../news/posts/2025-09-04-database-release.md), each database release also has its own Zenodo DOI, so a specific version can be cited. See [Citation](citation.md).
 
 ## API
 

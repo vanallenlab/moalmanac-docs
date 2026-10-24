@@ -15,4 +15,4 @@ To cite MOAlmanac or a specific database release, see [Citation](about/citation.
 
 !!! warning "For research use only"
 
-    Diagnostic and clinical use is prohibited. See the disclaimer in each repository's README for the full terms.
+    This database and software have not been validated for diagnostic or clinical use. See the [Disclaimer](about/disclaimer.md) and the [Terms of use](about/terms-of-use.md).
