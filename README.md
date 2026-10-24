@@ -38,7 +38,7 @@ Then commit the updated submodule (e.g. `git add external/db`) in this repositor
 
 ### Python dependencies
 
-This repository uses Python 3.14. We recommend using a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and running Python with either [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html). 
+This repository uses Python 3.14. We recommend using a [virtual environment](https://docs.python.org/3/tutorial/venv.html) and running Python with either [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html).
 
 Run the following from this repository's directory to create a virtual environment and install dependencies with Anaconda or Miniconda:
 
@@ -111,4 +111,4 @@ This site is built and deployed using [GitHub Actions](https://github.com/featur
 
 ## License
 
-This repository is distributed under the [GNU GENERAL PUBLIC LICENSE Version 2](./LICENSE).
+This repository is distributed under the [GNU General Public License, Version 2](./LICENSE).

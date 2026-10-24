@@ -12,4 +12,4 @@ The Molecular Oncology Almanac cloud portal ([portal.moalmanac.org](https://port
 
 [View on GitHub](https://github.com/vanallenlab/moalmanac-portal/blob/master/README.md)
 
-Please [contact us](https://dev.moalmanac.org/about#contact) if you have any questions, comments, or concerns about this change.
+Please [contact us](../../about/contact.md) if you have any questions, comments, or concerns about this change.

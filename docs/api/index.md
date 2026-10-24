@@ -4,6 +4,8 @@ The MOAlmanac API serves the [dereferenced](../database/index.md#referenced-and-
 
 The API is built with FastAPI ([moalmanac-api](https://github.com/vanallenlab/moalmanac-api)). The live interactive documentation at [api.moalmanac.org](https://api.moalmanac.org) lets you try requests in your browser; the [endpoint reference](reference/index.md) on this site is generated from the same OpenAPI description.
 
+The database records the API serves are licensed under CC BY 4.0 and the API software under GPL v2. See the [Terms of use](../about/terms-of-use.md) and [Citation](../about/citation.md).
+
 ## Try it
 
 List the genes named BRAF:

@@ -36,6 +36,9 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
   - pymdownx.superfences
 
 nav:
@@ -133,5 +136,10 @@ nav:
   - News:
       - news/index.md
   - About:
+      - Overview: about/index.md
       - Releases and versioning: about/releases-and-versioning.md
       - Citation: about/citation.md
+      - Contact: about/contact.md
+      - Terms of use: about/terms-of-use.md
+      - Privacy policy: about/privacy-policy.md
+      - Disclaimer: about/disclaimer.md
