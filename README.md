@@ -1,3 +1,5 @@
+[![License: GPL v2](https://img.shields.io/badge/Code-GPL%20v2-informational)](./LICENSE.md)
+
 This repository hosts the [Documentation subdomain](https://vanallenlab.github.io/moalmanac-docs/) for [Molecular Oncology Almanac](https://moalmanac.org), built with [Zensical](https://zensical.org). It contains documentation for all of the Molecular Oncology Almanac services.
 
 ## Installation
