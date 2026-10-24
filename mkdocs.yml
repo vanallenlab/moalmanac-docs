@@ -1,4 +1,4 @@
-site_name: Molecular Oncology Almanac Documentation
+site_name: Molecular Oncology Almanac
 site_url: https://docs.moalmanac.org/
 theme:
   name: material

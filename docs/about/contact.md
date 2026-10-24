@@ -12,3 +12,4 @@ For bugs, contributions, or questions, please reach out to us by email or throug
 - API: [vanallenlab/moalmanac-api](https://github.com/vanallenlab/moalmanac-api/issues)
 - Browser: [vanallenlab/moalmanac-browser](https://github.com/vanallenlab/moalmanac-browser/issues)
 - Database: [vanallenlab/moalmanac-db](https://github.com/vanallenlab/moalmanac-db/issues)
+- Documentation: [vanallenlab/moalmanac-docs](https://github.com/vanallenlab/moalmanac-docs/issues)
