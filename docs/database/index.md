@@ -15,8 +15,12 @@ The [schema reference](schemas/index.md) documents both forms, field by field.
 ## Getting the data
 
 - Search it in the [browser](https://moalmanac.org) or query it through the [API](../api/index.md).
-- Download it from the [repository](https://github.com/vanallenlab/moalmanac-db), or a specific version from its [releases](https://github.com/vanallenlab/moalmanac-db/releases). See [Releases and versioning](../about/releases-and-versioning.md).
+- Download it from the [GitHub repository](https://github.com/vanallenlab/moalmanac-db), or a specific version from its [Releases](https://github.com/vanallenlab/moalmanac-db/releases). See [Releases and versioning](../about/releases-and-versioning.md).
+
+## License
+
+The database is made available under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/), which permits use, including commercial use, provided appropriate credit is given. See [Citation](../about/citation.md) for how to give credit, and the [Terms of use](../about/terms-of-use.md) for the licenses and conditions that apply to the database and software.
 
 ## Suggesting an entry
 
-To suggest a relationship for the database, use the browser's [submission form](https://moalmanac.org/add) or open a pull request on [moalmanac-db](https://github.com/vanallenlab/moalmanac-db).
+To suggest a relationship for the database, open a Pull Request on [moalmanac-db](https://github.com/vanallenlab/moalmanac-db).

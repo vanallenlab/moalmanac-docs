@@ -11,7 +11,7 @@ This site documents each part of the project:
 | [Algorithm](algorithm/index.md) | The clinical interpretation algorithm for individual patient samples, and a description of its inputs and outputs. |
 | [Browser](browser/index.md) | The web browser at [moalmanac.org](https://moalmanac.org) for searching the database. |
 
-To cite MOAlmanac or a specific database release, see [Citation](about/citation.md). Each project's source code is on GitHub under [vanallenlab](https://github.com/vanallenlab).
+To cite MOAlmanac or a specific database release, see [Citation](about/citation.md). Each project's source code is on GitHub under [vanallenlab](https://github.com/vanallenlab). See [About](about/index.md) for resources and region-specific instances, or [Contact](about/contact.md) with questions.
 
 !!! warning "For research use only"
 
