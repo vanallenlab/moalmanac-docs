@@ -1,7 +1,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/Content-CC%20BY%204.0-informational)](./LICENSE)
 [![License: GPL v2](https://img.shields.io/badge/Code-GPL%20v2-informational)](./LICENSE-code)
 
-This repository hosts the [Documentation subdomain](https://vanallenlab.github.io/moalmanac-docs/) for [Molecular Oncology Almanac](https://moalmanac.org), built with [Zensical](https://zensical.org). It contains documentation for all of the Molecular Oncology Almanac services.
+This repository hosts the [Documentation subdomain](https://docs.moalmanac.org) for [Molecular Oncology Almanac](https://moalmanac.org), built with [Zensical](https://zensical.org). The site, [docs.moalmanac.org](https://docs.moalmanac.org), contains documentation for all of the Molecular Oncology Almanac services, as well as release notes and announcements, which are published under [docs.moalmanac.org/news](https://docs.moalmanac.org/news/).
 
 ## Installation
 
