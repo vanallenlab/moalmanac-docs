@@ -15,7 +15,7 @@ The new browser and database are built on the GA4GH Genomic Knowledge Model. Ove
 
 ## The old website and database
 
-The previous version of the browser and database remains available at [https://old.moalmanac.org](https://old.moalmanac.org) and [on GitHub](https://github.com/vanallenlab/moalmanac-db/blob/main/molecular-oncology-almanac.json). **Both will be deprecated on March 31st, 2027.**
+The previous version of the browser and database remains available at [https://old.moalmanac.org](https://old.moalmanac.org) and [on GitHub](https://github.com/vanallenlab/moalmanac-db/blob/main/molecular-oncology-almanac.json). **Both will be deprecated on March 31st, 2027**.
 
 ## Documentation
 
@@ -23,6 +23,6 @@ The previous version of the browser and database remains available at [https://o
 
 ## News
 
-We have migrated the content of news.moalmanac.org to this website, and news.moalmanac.org now redirects to [docs.moalmanac.org/news](https://docs.moalmanac.org/news). The news repository and redirect will be deprecated on December 31st, 2026.
+We have migrated the content of news.moalmanac.org to this website, and news.moalmanac.org now redirects to [docs.moalmanac.org/news](https://docs.moalmanac.org/news). **The news repository and redirect will be deprecated on December 31st, 2026**.
 
 If you have any questions or concerns, please [contact us](../../about/contact.md).
