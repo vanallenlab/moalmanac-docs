@@ -9,8 +9,6 @@ slug: 2026-05-07-database-release
 
 This Release contains updates to the draft version of the database. Concept mappings to RxNorm, SNOMED, and OMOP are now present for all curated therapies. We additionally curate an approval for imlunestrant from the European Medicines Agency, as well as another for belzutifan from both the European Medicines Agency and Food and Drug Administration.
 
-<!-- more -->
-
 [View on GitHub](https://github.com/vanallenlab/moalmanac-db/releases/tag/v.2026-05-07)
 
 ## Database content updates
