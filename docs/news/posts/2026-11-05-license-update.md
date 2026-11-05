@@ -8,6 +8,8 @@ slug: 2026-11-05-license-update
 
 We have updated the license and policies that govern the Molecular Oncology Almanac. Our database is now available under the Creative Commons Attribution 4.0 International License (CC BY 4.0), and our [terms of use](../../about/terms-of-use.md), [disclaimer](../../about/disclaimer.md), and [privacy policy](../../about/privacy-policy.md) have been rewritten and are effective as of October 24, 2026.
 
+<!-- more -->
+
 ## Licensing
 
 Previously, the database was released under the Open Database License (ODbL), which required that derived databases be shared under the same license. We have moved to [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), which permits any use, including commercial use, so long as appropriate credit is given. We hope this makes it easier to build on and integrate our work. Our software, including the [API](https://api.moalmanac.org), [browsers](https://moalmanac.org), and [interpretation algorithm](https://github.com/vanallenlab/moalmanac), remains licensed under [GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).

@@ -10,6 +10,8 @@ This release covers the 41 pull requests merged between 2026-05-08 and 2026-10-2
 
 [View on GitHub](https://github.com/vanallenlab/moalmanac-db/releases/tag/v.2026-11-05)
 
+<!-- more -->
+
 ## Database content updates
 
 ### Added entries

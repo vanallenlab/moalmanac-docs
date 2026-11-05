@@ -9,6 +9,8 @@ slug: 2026-11-05-new-websites
 
 [https://moalmanac.org](https://moalmanac.org) now points to our new browser and database schema, which follows the [GA4GH Genomic Knowledge Model](https://ga4gh.github.io/gkm-starter-kit/latest/) that we [announced as a work in progress](2025-03-06-gks-in-development.md) last year. We have also launched [docs.moalmanac.org](https://docs.moalmanac.org) as a centralized documentation website for all of our services.
 
+<!-- more -->
+
 ## The new browser and schema
 
 The new browser and database are built on the GA4GH Genomic Knowledge Model. Over the coming weeks, we will be migrating non-approval genomic knowledge statements from the old schema to the new one.

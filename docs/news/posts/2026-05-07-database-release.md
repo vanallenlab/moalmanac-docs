@@ -11,6 +11,8 @@ This Release contains updates to the draft version of the database. Concept mapp
 
 [View on GitHub](https://github.com/vanallenlab/moalmanac-db/releases/tag/v.2026-05-07)
 
+<!-- more -->
+
 ## Database content updates
 
 Added entries:
