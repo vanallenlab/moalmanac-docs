@@ -8,6 +8,8 @@ slug: 2026-11-05-database-release
 
 This release covers the 41 pull requests merged between 2026-05-08 and 2026-10-29, and is a formal launch of a 2.0.0 state of moalmanac-db. It adds 60 indications: 9 from FDA, 22 from EMA, 14 from Health Canada (HC), and 15 from the Health Service Executive (HSE). Over the same period, the relational database in `referenced/` was rebuilt to align more closely with GA4GH VA-Spec, VRS, and Cat-VRS, and the database content is now licensed under CC BY 4.0.
 
+[View on GitHub](https://github.com/vanallenlab/moalmanac-db/releases/tag/v.2026-11-05)
+
 ## Database content updates
 
 ### Added entries
